@@ -1,12 +1,15 @@
 "use client";
 
 import type React from "react";
+import dynamic from 'next/dynamic'
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
+// import { MapComponent } from "@/components/MapComponent";
+const MapComponent = dynamic(() => import("@/components/MapComponent"), { ssr: false });
 import {
   Card,
   CardContent,
@@ -89,8 +92,7 @@ const ContactSection = () => {
                   <div>
                     <h4 className="font-medium">Adresse</h4>
                     <p className="text-muted-foreground">
-                      123 Avenue Maison, 243 Bukavu, République Democratique du
-                      Congo
+                      123 Avenue Maison, Bukavu, République Democratique du Congo
                     </p>
                   </div>
                 </div>
@@ -99,7 +101,7 @@ const ContactSection = () => {
                   <Phone className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-medium">Téléphone</h4>
-                    <p className="text-muted-foreground">+33 1 23 45 67 89</p>
+                    <p className="text-muted-foreground">+243 987 654 321</p>
                   </div>
                 </div>
 
@@ -127,9 +129,7 @@ const ContactSection = () => {
 
             {/* Map Placeholder */}
             <div className="relative h-[200px] rounded-lg overflow-hidden bg-secondary">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-muted-foreground">Carte interactive</p>
-              </div>
+              <MapComponent />
             </div>
           </div>
 

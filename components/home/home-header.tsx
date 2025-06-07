@@ -62,7 +62,7 @@ export default function HomeHeader() {
           ))}
           <ThemeToggle />
           <Button asChild variant={isScrolled ? "default" : "outline"}>
-            <Link href="/faire-un-don">Faire un don</Link>
+            <Link href="/faire-un-don" className="text-black hover:text-primary">Faire un don</Link>
           </Button>
         </nav>
 

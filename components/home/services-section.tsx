@@ -39,7 +39,7 @@ const ServicesSection = () => {
     <section className="py-16 bg-secondary/50">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="mb-4">Nos Services</h2>
+          <h2 className="mb-4">Nos Départements</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Découvrez les différentes façons de vous impliquer dans notre communauté et de grandir spirituellement.
           </p>

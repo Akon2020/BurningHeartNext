@@ -1,7 +1,7 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ChevronRight } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
 const AboutSection = () => {
   return (
@@ -10,7 +10,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
             <Image
-              src="/placeholder.svg?height=500&width=600"
+              src="/bg.jpg?height=500&width=600"
               alt="À propos de Burning Heart"
               fill
               className="object-cover"
@@ -20,25 +20,39 @@ const AboutSection = () => {
           <div>
             <h2 className="text-primary mb-6">À Propos de Nous</h2>
             <p className="text-lg mb-6">
-              Burning Heart est une communauté dynamique fondée en 2010 avec une vision claire : allumer le feu
-              de la foi dans le coeur de chaque personne qui franchit nos portes.
+              Burning Heart Jesuit Ministries est un apostolat médiatique à but
+              non lucratif qui désire soutenir les préférences apostoliques
+              universelles de la Compagnie de Jésus concernant l&apos;aide à
+              porter aux âmes à trouver Jésus-Christ et à le suivre.
             </p>
             <p className="text-lg mb-6">
-              Notre communauté est un lieu où chacun peut se sentir accueilli, quelle que soit son origine ou son
-              parcours. Nous croyons que la foi est un voyage personnel qui s'enrichit dans la communauté.
+              Il se veut un outil pour la{" "}
+              <b>promotion du discernement et des Exercices Spirituels</b> et
+              devra{" "}
+              <b>
+                cheminer avec les jeunes, les accompagner dans la création
+                d&apos;un avenir plein d&apos;espoir.
+              </b>
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               <div className="bg-secondary p-4 rounded-lg">
                 <h4 className="font-bold mb-2">Notre Mission</h4>
-                <p>Inspirer et équiper chacun pour vivre une vie de foi authentique.</p>
+                <p>
+                  Ouvrir l&apos;accès des exercices spirituels à tous les hommes
+                  assoiffés de Dieu pour qu&apos;ils en jouissent et
+                  s&apos;attachent au créateur de toute chose.
+                </p>
               </div>
               <div className="bg-secondary p-4 rounded-lg">
                 <h4 className="font-bold mb-2">Notre Vision</h4>
-                <p>Être une communauté qui transforme des vies et impacte positivement la société.</p>
+                <p>
+                  Devenir un outil de rayonnement spirituel et une référence
+                  pour l&apos;expansion évangélique à travers les Exercices
+                  Spirituels.
+                </p>
               </div>
             </div>
-
             <Button asChild>
               <Link href="/a-propos">
                 En savoir plus <ChevronRight className="ml-2 h-4 w-4" />
@@ -48,7 +62,7 @@ const AboutSection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutSection
+export default AboutSection;
