@@ -1,38 +1,75 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { BookIcon as Bible, Heart, Users, Music, BookOpen, Coffee } from "lucide-react"
+import { Package, FileText, Users, Feather, Target, Globe, Camera, Wallet, Compass, Handshake, UserCog, Megaphone, Bible } from "lucide-react"
 
 const services = [
   {
-    title: "Culte du Dimanche",
-    description: "Un moment de louange, d'enseignement biblique et de communion fraternelle pour toute la famille.",
-    icon: Bible,
+    title: "Coordination",
+    description: "Pilote central de l’organisation, le coordinateur supervise les départements, définit les responsabilités, veille à la mission spirituelle et forme les accompagnateurs.",
+    icon: Compass,
   },
   {
-    title: "Groupes de Maison",
-    description: "Des rencontres hebdomadaires en petits groupes pour approfondir sa foi et créer des liens.",
+    title: "Spiritual Supervisor",
+    description: "Responsable de la qualité des enseignements spirituels, il accompagne les membres dans leur foi et veille à l’unité avec la tradition ignatienne.",
+    icon: Feather,
+  },
+  {
+    title: "Supervision",
+    description: "Composée des accompagnateurs, cette équipe suit les âmes, forme les membres et transmet la tradition spirituelle et ignatienne.",
+    icon: Handshake,
+  },
+  {
+    title: "Assistant",
+    description: "Appuie la coordination, supervise les départements, gère les ressources humaines et les relations extérieures, et modère les rencontres.",
+    icon: UserCog,
+  },
+  {
+    title: "HR Manager",
+    description: "Responsable des ressources humaines et du bon fonctionnement des équipes, il assure le lien entre la gestion humaine et opérationnelle.",
     icon: Users,
   },
   {
-    title: "Ministère de Louange",
-    description: "Exprimez votre adoration à travers la musique et rejoignez notre équipe de louange.",
-    icon: Music,
+    title: "Administrator Manager",
+    description: "Gère la logistique, contrôle le matériel, prépare les espaces de réunion, assure l’inventaire, les déplacements, la sonorisation et les installations techniques.",
+    icon: Package,
   },
   {
-    title: "École du Dimanche",
-    description: "Un enseignement adapté aux enfants pour leur permettre de grandir dans la foi.",
-    icon: BookOpen,
+    title: "Accountant & Treasury",
+    description: "Gère les finances : budgets, entrées et sorties, rapports financiers, rédaction de projets, et inventaire économique.",
+    icon: Wallet,
   },
   {
-    title: "Actions Sociales",
-    description: "Des initiatives pour aider les plus démunis et avoir un impact positif dans notre communauté.",
-    icon: Heart,
+    title: "Secrétariat",
+    description: "Planifie les activités, gère les convocations, rédige les PV, s’occupe des archives, de la propreté des lieux, des fournitures et des supports pour les rencontres.",
+    icon: FileText,
   },
   {
-    title: "Café-Rencontre",
-    description: "Un espace convivial pour accueillir les nouveaux venus et favoriser les échanges.",
-    icon: Coffee,
+    title: "Communication Office",
+    description: "S’occupe de la communication interne et externe, crée les supports visuels, gère les réseaux sociaux et assure la visibilité du groupe.",
+    icon: Megaphone,
   },
+  {
+    title: "Médias",
+    description: "Couvre les événements en photo et vidéo, gère les archives médiatiques, assure la diffusion du message via la presse et les plateformes numériques.",
+    icon: Camera,
+  },
+  {
+    title: "Vocation Promotor",
+    description: "Accompagne les membres à discerner et vivre leur appel personnel, en accord avec la mission de Burning Heart.",
+    icon: Target,
+  },
+  {
+    title: "Spiritual Officer",
+    description: "Organise les activités liturgiques et spirituelles : retraites, veillées, prières communautaires, et animation pastorale.",
+    icon: Bible,
+  },
+  {
+    title: "Social & Well-being",
+    description: "Responsable de l’accueil, de la convivialité, des sorties, fêtes, approvisionnement alimentaire et de la sécurité (protocole).",
+    icon: Globe,
+  }
 ]
+
+
 
 const ServicesSection = () => {
   return (
@@ -41,7 +78,7 @@ const ServicesSection = () => {
         <div className="text-center mb-12">
           <h2 className="mb-4">Nos Départements</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Découvrez les différentes façons de vous impliquer dans notre communauté et de grandir spirituellement.
+            Découvrez les différentes façons dont nous nous impliquons dans la communauté et la faisons grandir.
           </p>
         </div>
 

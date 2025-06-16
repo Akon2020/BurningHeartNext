@@ -34,9 +34,9 @@ const Hero = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h1 className="mb-6 leading-tight">Allumez le Feu de la Foi dans Votre Cœur</h1>
+          <h1 className="mb-6 leading-tight text-[3rem]">Ravivez la Flamme de l'espérance dans Votre Cœur</h1>
           <p className="text-xl mb-8 text-gray-200">
-            Rejoignez notre communauté pour grandir spirituellement, trouver du soutien et découvrir votre but dans la
+            Rejoignez notre communauté pour grandir spirituellement, trouver du soutien et discerner la volonté de Dieu dans votre
             vie.
           </p>
           <div className="flex flex-wrap gap-4">

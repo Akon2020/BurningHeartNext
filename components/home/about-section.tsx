@@ -8,9 +8,9 @@ const AboutSection = () => {
     <section className="py-16">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
+          <div className="relative h-[400px] lg:h-[600px] rounded-lg overflow-hidden">
             <Image
-              src="/bg.jpg?height=500&width=600"
+              src="/logoN.png?height=800&width=600"
               alt="À propos de Burning Heart"
               fill
               className="object-cover"
@@ -20,10 +20,10 @@ const AboutSection = () => {
           <div>
             <h2 className="text-primary mb-6">À Propos de Nous</h2>
             <p className="text-lg mb-6">
-              Burning Heart Jesuit Ministries est un apostolat médiatique à but
-              non lucratif qui désire soutenir les préférences apostoliques
+              <b>Burning Heart - Pèlerins avec le Christ</b> est un apostolat spirituel et médiatique à but
+              non lucratif désirant soutenir les préférences apostoliques
               universelles de la Compagnie de Jésus concernant l&apos;aide à
-              porter aux âmes à trouver Jésus-Christ et à le suivre.
+              porter aux âmes, à trouver Jésus-Christ et à le suivre.
             </p>
             <p className="text-lg mb-6">
               Il se veut un outil pour la{" "}
@@ -39,7 +39,7 @@ const AboutSection = () => {
               <div className="bg-secondary p-4 rounded-lg">
                 <h4 className="font-bold mb-2">Notre Mission</h4>
                 <p>
-                  Ouvrir l&apos;accès des exercices spirituels à tous les hommes
+                  Ouvrir l&apos;accès aux exercices spirituels à tous les hommes
                   assoiffés de Dieu pour qu&apos;ils en jouissent et
                   s&apos;attachent au créateur de toute chose.
                 </p>

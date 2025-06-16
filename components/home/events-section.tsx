@@ -7,26 +7,26 @@ import { Calendar, Clock, MapPin, ChevronRight } from "lucide-react"
 const events = [
   {
     id: 1,
-    title: "Conférence Annuelle",
+    title: "Messe Chrismale",
     date: "15 Juin 2025",
     time: "18:00 - 21:00",
-    location: "Salle Principale",
+    location: "Cathédrale Notre Dame de la Paix",
     image: "/placeholder.svg?height=300&width=500",
   },
   {
     id: 2,
-    title: "Retraite Spirituelle",
+    title: "Retraite de Carême",
     date: "10-12 Juillet 2025",
-    time: "Tout le weekend",
-    location: "Centre de retraite",
+    time: "Toute la journée",
+    location: "Centre Spirituel Saint-Ignace",
     image: "/placeholder.svg?height=300&width=500",
   },
   {
     id: 3,
-    title: "Concert de Louange",
+    title: "Veillée de Prière pour la Paix",
     date: "5 Août 2025",
     time: "19:30 - 22:00",
-    location: "Auditorium",
+    location: "Paroisse Saint-Pierre Claver",
     image: "/placeholder.svg?height=300&width=500",
   },
 ]

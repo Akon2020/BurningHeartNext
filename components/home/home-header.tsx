@@ -26,7 +26,7 @@ export default function HomeHeader() {
   const navLinks = [
     { name: "Accueil", href: "/" },
     { name: "À propos", href: "/#about" },
-    { name: "Services", href: "/#services" },
+    { name: "Départements", href: "/#services" },
     { name: "Événements", href: "/#events" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/#contact" },
@@ -89,7 +89,7 @@ export default function HomeHeader() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="font-medium py-2 hover:text-primary transition-colors"
+                className="font-medium py-2 text-black hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.name}

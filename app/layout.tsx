@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Burning Heart - Ignatian Spirituality",
-  description: "Burning Heart Ignatian Spirituality - Allumez le feu dans votre coeur",
+  description: "Burning Heart Ignatian Spirituality - Ravivez la flamme de l'espérance dans votre coeur",
 }
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning={true}>
       <head>
-        <link rel="icon" type="image/png" href="/logo.png" />
+        <link rel="icon" type="image/png" href="/logoN.png" />
       </head>
       <body className={inter.className}>
         <ThemeProvider
