@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Package, FileText, Users, Feather, Target, Globe, Camera, Wallet, Compass, Handshake, UserCog, Megaphone, Bible } from "lucide-react"
+import { Package, FileText, Presentation, Users, Megaphone, Feather, Target, Globe, Camera, Wallet, Compass, Handshake, UserCog } from "lucide-react"
 
 const services = [
   {
@@ -34,7 +34,7 @@ const services = [
   },
   {
     title: "Accountant & Treasury",
-    description: "Gère les finances : budgets, entrées et sorties, rapports financiers, rédaction de projets, et inventaire économique.",
+    description: "Gère les finances : budgets, entrées et sorties, rapports financiers, et inventaire économique.",
     icon: Wallet,
   },
   {
@@ -43,14 +43,9 @@ const services = [
     icon: FileText,
   },
   {
-    title: "Communication Office",
-    description: "S’occupe de la communication interne et externe, crée les supports visuels, gère les réseaux sociaux et assure la visibilité du groupe.",
+    title: "Médias & Communication Office",
+    description: "S’occupe de la communication interne et externe, gère les archives médiatiques, crée les supports visuels, gère les réseaux sociaux, assure la visibilité du groupe, et assure la diffusion du message via la presse et les plateformes numériques.",
     icon: Megaphone,
-  },
-  {
-    title: "Médias",
-    description: "Couvre les événements en photo et vidéo, gère les archives médiatiques, assure la diffusion du message via la presse et les plateformes numériques.",
-    icon: Camera,
   },
   {
     title: "Vocation Promotor",
@@ -60,15 +55,14 @@ const services = [
   {
     title: "Spiritual Officer",
     description: "Organise les activités liturgiques et spirituelles : retraites, veillées, prières communautaires, et animation pastorale.",
-    icon: Bible,
+    icon: Presentation,
   },
   {
     title: "Social & Well-being",
-    description: "Responsable de l’accueil, de la convivialité, des sorties, fêtes, approvisionnement alimentaire et de la sécurité (protocole).",
+    description: "Responsable de l’accueil, de la convivialité, des sorties, fêtes, approvisionnement alimentaire et le protocole.",
     icon: Globe,
   }
 ]
-
 
 
 const ServicesSection = () => {

@@ -92,7 +92,7 @@ const ContactSection = () => {
                   <div>
                     <h4 className="font-medium">Adresse</h4>
                     <p className="text-muted-foreground">
-                      123 Avenue Maison, Bukavu, République Democratique du Congo
+                      259 Avenue Patrice Emery Lumumba, Q. Nyalukemba, Bukavu, République Democratique du Congo
                     </p>
                   </div>
                 </div>
@@ -110,7 +110,7 @@ const ContactSection = () => {
                   <div>
                     <h4 className="font-medium">Email</h4>
                     <p className="text-muted-foreground">
-                      contact@burningheart.org
+                      burningheartihs@gmail.com
                     </p>
                   </div>
                 </div>
@@ -118,9 +118,15 @@ const ContactSection = () => {
                 <div className="flex items-start gap-3">
                   <Clock className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-medium">Horaires d'ouverture</h4>
+                    <h4 className="font-medium">Horaire d'ouverture</h4>
                     <p className="text-muted-foreground">
-                      Lundi - Vendredi: 9h00 - 17h00
+                      Lundi - Vendredi: 16h00 - 17h00 (Sur rendez-vous)
+                    </p>
+                    <p className="text-muted-foreground">
+                      Samedi: 15h00 - 17h00
+                    </p>
+                    <p className="text-muted-foreground">
+                      Dimanche: 8h00 - 12h00
                     </p>
                   </div>
                 </div>
