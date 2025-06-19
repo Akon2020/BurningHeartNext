@@ -64,27 +64,26 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Burning Heart</h3>
             <p className="text-muted-foreground mb-4">
-              Communauté dédiée à allumer le feu de la foi dans le coeur de
-              chacun. Rejoignez notre communauté pour grandir spirituellement.
+              Communauté dédiée à ravivez la flamme de l'espérance dans vos cœur. Rejoignez notre communauté pour grandir spirituellement, trouver du soutien et discerner la volonté de Dieu dans votre vie.
             </p>
             <div className="flex gap-4">
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://facebook.com" aria-label="Facebook">
+                <Link href="https://facebook.com" className="hover:bg-primary hover:text-white" aria-label="Facebook">
                   <Facebook size={18} />
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://instagram.com" aria-label="Instagram">
+                <Link href="https://instagram.com" className="hover:bg-primary hover:text-white" aria-label="Instagram">
                   <Instagram size={18} />
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://twitter.com" aria-label="Twitter">
+                <Link href="https://twitter.com" className="hover:bg-primary hover:text-white" aria-label="Twitter">
                   <Twitter size={18} />
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://youtube.com" aria-label="Youtube">
+                <Link href="https://youtube.com" className="hover:bg-primary hover:text-white" aria-label="Youtube">
                   <Youtube size={18} />
                 </Link>
               </Button>
@@ -145,8 +144,7 @@ const Footer = () => {
               <li className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <span>
-                  123 Avenue Maison, 243 Bukavu, République Democratique du
-                  Congo
+                  259 Avenue Patrice Emery Lumumba, Q. Nyalukemba, Bukavu, République Democratique du Congo
                 </span>
               </li>
               <li className="flex items-center gap-2">
@@ -155,7 +153,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                <span>contact@burningheart.org</span>
+                <span>burningheartihs@gmail.com</span>
               </li>
             </ul>
           </div>

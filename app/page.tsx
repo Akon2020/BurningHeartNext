@@ -5,10 +5,11 @@ import EventsSection from "@/components/home/events-section"
 import TestimonialsSection from "@/components/home/testimonials-section"
 import ContactSection from "@/components/home/contact-section"
 import NewsletterSection from "@/components/home/newsletter-section"
+import Footer from "@/components/footer"
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-16 pb-16">
+    <div className="flex flex-col gap-8">
       <Hero />
       <AboutSection />
       <ServicesSection />
@@ -16,6 +17,7 @@ export default function Home() {
       <TestimonialsSection />
       <NewsletterSection />
       <ContactSection />
+      <Footer />
     </div>
   )
 }
