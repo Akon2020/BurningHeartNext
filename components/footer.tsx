@@ -68,22 +68,17 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://facebook.com" className="hover:bg-primary hover:text-white" aria-label="Facebook">
+                <Link href="https://facebook.com/burningheart87" className="hover:bg-primary hover:text-white" aria-label="Facebook">
                   <Facebook size={18} />
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://instagram.com" className="hover:bg-primary hover:text-white" aria-label="Instagram">
+                <Link href="https://instagram.com/burningheart87" className="hover:bg-primary hover:text-white" aria-label="Instagram">
                   <Instagram size={18} />
                 </Link>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <Link href="https://twitter.com" className="hover:bg-primary hover:text-white" aria-label="Twitter">
-                  <Twitter size={18} />
-                </Link>
-              </Button>
-              <Button variant="outline" size="icon" asChild>
-                <Link href="https://youtube.com" className="hover:bg-primary hover:text-white" aria-label="Youtube">
+                <Link href="https://youtube.com/@burningheart-bhis" className="hover:bg-primary hover:text-white" aria-label="Youtube">
                   <Youtube size={18} />
                 </Link>
               </Button>
