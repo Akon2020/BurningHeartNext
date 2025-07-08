@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
+import { createContact } from "@/actions/contact";
+
 // import { MapComponent } from "@/components/MapComponent";
 const MapComponent = dynamic(() => import("@/components/MapComponent"), { ssr: false });
 import {
@@ -49,20 +51,34 @@ const ContactSection = () => {
 
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      await createContact({
+        nomComplet: formData.name,
+        email: formData.email,
+        sujet: formData.subject || "Aucun sujet précisé",
+        message: formData.message,
+      });
+
       toast({
-        title: "Message envoyé!",
+        title: "Message envoyé !",
         description: "Nous vous répondrons dans les plus brefs délais.",
       });
+
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
       });
+    } catch (error: any) {
+      toast({
+        title: "Erreur d'envoi",
+        description: error.message || "Une erreur est survenue.",
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (

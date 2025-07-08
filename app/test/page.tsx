@@ -37,7 +37,6 @@ import EditUserModal from "@/components/modals/edit-user-modal";
 import DeleteConfirmationModal from "@/components/modals/delete-confirmation-modal";
 import { toast } from "@/components/ui/use-toast";
 
-
 export default function UsersPage() {
   const [usersList, setUsersList] = useState<any[]>([]);
   const [nombreUsers, setNombreUsers] = useState<number>(0);
@@ -89,7 +88,7 @@ export default function UsersPage() {
   useEffect(() => {
     fetchUsers();
   }, []);
-  
+
   const filteredUsers = usersList.filter(
     (user) =>
       user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -132,7 +131,6 @@ export default function UsersPage() {
         </Button>
       </div>
 
-      {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -150,7 +148,6 @@ export default function UsersPage() {
         </Button>
       </div>
 
-      {/* Users Table */}
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -256,7 +253,6 @@ export default function UsersPage() {
         </Table>
       </div>
 
-      {/* Pagination */}
       <div className="flex items-center justify-between">
         <p className="text-sm text-muted-foreground">
           Affichage de <strong>1</strong> à{" "}
@@ -282,14 +278,12 @@ export default function UsersPage() {
         onClose={() => setIsAddModalOpen(false)}
         onSuccess={fetchUsers}
       />
-
       <EditUserModal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         user={selectedUser}
         onSuccess={fetchUsers}
       />
-
       <DeleteConfirmationModal
         isOpen={isDeleteModalOpen}
         onClose={() => setIsDeleteModalOpen(false)}
@@ -300,3 +294,60 @@ export default function UsersPage() {
     </div>
   );
 }
+
+
+// "use client";
+
+// import { useEffect, useState } from 'react';
+// import { getAllUsers } from '@/actions/users';
+// import { User } from '@/types/user';
+// import Image from 'next/image';
+
+// export default function UsersPage() {
+//   const [users, setUsers] = useState<User[]>([]);
+//   const [count, setCount] = useState<number>(0);
+//   const [error, setError] = useState<string | null>(null);
+//   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+//   useEffect(() => {
+//     getAllUsers()
+//       .then((res) => {
+//         setUsers(res.usersInfo);
+//         setCount(res.nombre);
+//       })
+//       .catch((err) => setError(err.message))
+//       .finally(() => setIsLoading(false));
+//   }, []);
+
+//   return (
+//     <div className="p-4">
+//       <h1 className="text-2xl font-bold mb-2">Liste des utilisateurs</h1>
+//       <p className="text-sm text-gray-500 mb-4">Total : {count} utilisateurs</p>
+
+//       {isLoading && (
+//         <p className="text-blue-500 animate-pulse">Chargement des utilisateurs...</p>
+//       )}
+
+//       {error && <p className="text-red-500">{error}</p>}
+
+//       <ul className="space-y-3">
+//         {!isLoading && users.map((user) => (
+//           <li key={user.idUtilisateur} className="flex items-center gap-4 p-4 border rounded-lg">
+//             <div className="w-14 h-14 relative rounded-full overflow-hidden border">
+//               <Image
+//                 src={`${process.env.NEXT_PUBLIC_API_URL}/${user.avatar}`}
+//                 alt={user.nomComplet}
+//                 fill
+//                 className="object-cover"
+//               />
+//             </div>
+//             <div>
+//               <p className="font-semibold">{user.nomComplet}</p>
+//               <p className="text-sm text-gray-600">{user.email} — {user.role}</p>
+//             </div>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }

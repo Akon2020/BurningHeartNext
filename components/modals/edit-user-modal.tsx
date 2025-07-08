@@ -41,9 +41,9 @@ export default function EditUserModal({ isOpen, onClose, user, onSuccess }: Edit
     role: "",
     status: "",
     resetPassword: false,
-    newPassword: "",
-    confirmPassword: "",
   })
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
 
   useEffect(() => {
     if (user) {
@@ -53,8 +53,6 @@ export default function EditUserModal({ isOpen, onClose, user, onSuccess }: Edit
         role: user.role,
         status: user.status,
         resetPassword: false,
-        newPassword: "",
-        confirmPassword: "",
       })
     }
   }, [user])
@@ -63,6 +61,14 @@ export default function EditUserModal({ isOpen, onClose, user, onSuccess }: Edit
     const { name, value } = e.target
     setUserData((prev) => ({ ...prev, [name]: value }))
   }
+
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setAvatarFile(file);
+      setAvatarPreview(URL.createObjectURL(file)); // pour prévisualiser
+    }
+  };
 
   const handleSelectChange = (name: string, value: string) => {
     setUserData((prev) => ({ ...prev, [name]: value }))
@@ -188,44 +194,26 @@ export default function EditUserModal({ isOpen, onClose, user, onSuccess }: Edit
               </Select>
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="resetPassword" className="text-right">
-                Réinitialiser le mot de passe
+              <Label htmlFor="avatar" className="text-right">
+                Avatar
               </Label>
-              <div className="col-span-3">
-                <Switch id="resetPassword" checked={userData.resetPassword} onCheckedChange={handleSwitchChange} />
-              </div>
+              <Input
+                id="avatar"
+                name="avatar"
+                type="file"
+                accept="image/*"
+                className="col-span-3"
+                onChange={handleAvatarChange}
+              />
             </div>
-            {userData.resetPassword && (
-              <>
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="newPassword" className="text-right">
-                    Nouveau mot de passe
-                  </Label>
-                  <Input
-                    id="newPassword"
-                    name="newPassword"
-                    type="password"
-                    value={userData.newPassword}
-                    onChange={handleChange}
-                    className="col-span-3"
-                    required={userData.resetPassword}
-                  />
-                </div>
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="confirmPassword" className="text-right">
-                    Confirmer
-                  </Label>
-                  <Input
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    type="password"
-                    value={userData.confirmPassword}
-                    onChange={handleChange}
-                    className="col-span-3"
-                    required={userData.resetPassword}
-                  />
-                </div>
-              </>
+            {avatarPreview && (
+              <div className="flex justify-center mt-2">
+                <img
+                  src={avatarPreview}
+                  alt="Preview"
+                  className="h-24 w-24 rounded-full object-cover border"
+                />
+              </div>
             )}
           </div>
           <DialogFooter>

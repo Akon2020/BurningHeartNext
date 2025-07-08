@@ -3,7 +3,7 @@ export interface AuthUser {
   id: number
   name: string
   email: string
-  role: "admin" | "editor" | "member"
+  role: "admin" | "editeur" | "membre"
 }
 
 // État simulé
@@ -39,7 +39,7 @@ export async function register(name: string, email: string, password: string): P
       id: Math.floor(Math.random() * 1000),
       name,
       email,
-      role: "member",
+      role: "membre",
     }
     return currentUser
   }
@@ -68,12 +68,12 @@ export async function isAuthenticated(): Promise<boolean> {
   return (await getCurrentUser()) !== null
 }
 
-export async function hasRole(role: "admin" | "editor" | "member"): Promise<boolean> {
+export async function hasRole(role: "admin" | "editor" | "membre"): Promise<boolean> {
   // Vérifier si l'utilisateur a le rôle spécifié
   const user = await getCurrentUser()
   if (!user) return false
 
   if (role === "admin") return user.role === "admin"
   if (role === "editor") return user.role === "admin" || user.role === "editor"
-  return true // Tous les utilisateurs ont au moins le rôle "member"
+  return true // Tous les utilisateurs ont au moins le rôle "membre"
 }
