@@ -58,7 +58,7 @@ export default function UsersPage() {
           const lastLogin = u.derniereConnexion
             ? new Date(u.derniereConnexion).toLocaleString()
             : "Jamais";
-          
+
           const createdAt = new Date(u.createdAt).toLocaleString()
 
           const status = lastLogin === "Jamais" ? "pending" : "active";

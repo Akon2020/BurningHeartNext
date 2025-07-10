@@ -10,58 +10,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-// Exemple de données des membres de l'équipe
-// const teamMembers = [
-//   {
-//     id: 1,
-//     name: "Père Ciza",
-//     role: "Fondateur principal",
-//     bio: "Fondateur de la communauté Burning Heart, le Père Ciza a plus de 20 ans d'expérience dans le ministère.",
-//     image: "/placeholder.svg?height=300&width=300",
-//     order: 1,
-//   },
-//   {
-//     id: 2,
-//     name: "Sarah Martin",
-//     role: "Directrice de la Louange",
-//     bio: "Sarah dirige l'équipe de louange depuis 2018 et est également compositrice de plusieurs chants.",
-//     image: "/placeholder.svg?height=300&width=300",
-//     order: 2,
-//   },
-//   {
-//     id: 3,
-//     name: "Thomas Leclerc",
-//     role: "Responsable Jeunesse",
-//     bio: "Thomas s'occupe du ministère de la jeunesse et organise des activités pour les 12-25 ans.",
-//     image: "/placeholder.svg?height=300&width=300",
-//     order: 3,
-//   },
-//   {
-//     id: 4,
-//     name: "Marie Dubois",
-//     role: "Coordinatrice des Groupes de Maison",
-//     bio: "Marie supervise tous les groupes de maison et forme les nouveaux leaders.",
-//     image: "/placeholder.svg?height=300&width=300",
-//     order: 4,
-//   },
-//   {
-//     id: 5,
-//     name: "Jean Moreau",
-//     role: "Responsable de l'Accueil",
-//     bio: "Jean coordonne l'équipe d'accueil et veille à ce que chaque visiteur se sente bienvenu.",
-//     image: "/placeholder.svg?height=300&width=300",
-//     order: 5,
-//   },
-//   {
-//     id: 6,
-//     name: "Sophie Lambert",
-//     role: "Responsable de l'École du Dimanche",
-//     bio: "Sophie organise les activités pour les enfants et forme les moniteurs.",
-//     image: "/placeholder.svg?height=300&width=300",
-//     order: 6,
-//   },
-// ]
-
 export default function TeamAdminPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [teamMembers, setTeamMembers] = useState<any[]>([]);
@@ -89,7 +37,7 @@ export default function TeamAdminPage() {
         );
         setNombreUsers(total);
       } catch (err) {
-        console.error("Erreur lors du chargement des utilisateurs :", err);
+        console.error("Erreur lors du chargement des membres :", err);
       } finally {
         setLoading(false);
       }
@@ -133,7 +81,13 @@ export default function TeamAdminPage() {
 
       {/* Team Members Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredMembers.map((member) => (
+        {loading ? (
+          <div className="flex items-center justify-center">
+            <div className="text-center py-6">
+              <Loader2 className="animate-spin h-10 w-10 mx-auto text-red-700" />
+            </div>
+          </div>
+        ): (filteredMembers.map((member) => (
           <Card key={member.id} className="overflow-hidden">
             <div className="relative h-64 w-full">
               <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
@@ -165,7 +119,8 @@ export default function TeamAdminPage() {
               </div>
             </CardContent>
           </Card>
-        ))}
+        ))
+      )}
       </div>
     </div>
   )
