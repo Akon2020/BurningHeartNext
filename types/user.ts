@@ -30,3 +30,20 @@ export interface GetAllContactsResponse {
   nombre: number;
   contactsInfo: Contact[];
 }
+
+export interface Equipe {
+  idEquipe: number;
+  nomComplet: string;
+  fonction: string;
+  biographie: string;
+  photoProfil?: string;
+  ordre: number;
+  actif: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface GetAllEquipesResponse {
+  total: number;
+  equipes: Equipe[];
+}

@@ -17,6 +17,7 @@ import {
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "@/components/ui/use-toast"
 import { Switch } from "@/components/ui/switch"
+import { updateUser } from "@/actions/users";
 
 interface User {
   id: number
@@ -66,7 +67,7 @@ export default function EditUserModal({ isOpen, onClose, user, onSuccess }: Edit
     const file = e.target.files?.[0];
     if (file) {
       setAvatarFile(file);
-      setAvatarPreview(URL.createObjectURL(file)); // pour prévisualiser
+      setAvatarPreview(URL.createObjectURL(file));
     }
   };
 
@@ -74,56 +75,52 @@ export default function EditUserModal({ isOpen, onClose, user, onSuccess }: Edit
     setUserData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSwitchChange = (checked: boolean) => {
-    setUserData((prev) => ({ ...prev, resetPassword: checked }))
-  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    // Validation
     if (!userData.name || !userData.email) {
       toast({
         title: "Erreur",
         description: "Veuillez remplir tous les champs obligatoires.",
         variant: "destructive",
-      })
-      return
+      });
+      return;
     }
 
-    if (userData.resetPassword && userData.newPassword !== userData.confirmPassword) {
-      toast({
-        title: "Erreur",
-        description: "Les mots de passe ne correspondent pas.",
-        variant: "destructive",
-      })
-      return
-    }
-
-    setIsLoading(true)
+    setIsLoading(true);
 
     try {
-      // Simuler un appel API
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      const response = await updateUser({
+        nomComplet: userData.name,
+        email: userData.email,
+        role: userData.role,
+        avatar: avatarFile || undefined,
+      });
 
       toast({
-        title: "Utilisateur modifié",
-        description: `L'utilisateur ${userData.name} a été modifié avec succès.`,
-      })
+        title: "Utilisateur créé",
+        description: `L'utilisateur ${response?.nomComplet || userData.name} a été créé avec succès.`,
+      });
 
-      // Fermer le modal et rafraîchir la liste si nécessaire
-      onClose()
-      if (onSuccess) onSuccess()
-    } catch (error) {
+      setUserData({ name: "", email: "", role: "membre" });
+      setAvatarFile(null);
+      setAvatarPreview(null);
+
+      onClose();
+      if (onSuccess) onSuccess();
+    } catch (error: any) {
       toast({
         title: "Erreur",
-        description: "Une erreur est survenue lors de la modification de l'utilisateur.",
+        description:
+          error?.message ||
+          "Une erreur est survenue lors de la création de l'utilisateur.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   if (!user) return null
 

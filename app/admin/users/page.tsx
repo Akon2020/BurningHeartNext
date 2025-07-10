@@ -58,6 +58,8 @@ export default function UsersPage() {
           const lastLogin = u.derniereConnexion
             ? new Date(u.derniereConnexion).toLocaleString()
             : "Jamais";
+          
+          const createdAt = new Date(u.createdAt).toLocaleString()
 
           const status = lastLogin === "Jamais" ? "pending" : "active";
 
@@ -68,6 +70,7 @@ export default function UsersPage() {
             role: u.role,
             avatar: `${process.env.NEXT_PUBLIC_API_URL}/${u.avatar}`,
             lastLogin,
+            createdAt,
             status,
           };
         })
@@ -107,7 +110,7 @@ export default function UsersPage() {
   };
   const confirmDeleteUser = async () => {
     try {
-      await api.delete(`/api/users/${selectedUser.id}`);
+      await api.delete(`/api/users/delete/${selectedUser.id}`);
       setUsersList(usersList.filter((u) => u.id !== selectedUser.id));
       toast({
         title: "Utilisateur supprimé",
@@ -159,6 +162,7 @@ export default function UsersPage() {
               <TableHead>Rôle</TableHead>
               <TableHead>Statut</TableHead>
               <TableHead>Dernière connexion</TableHead>
+              <TableHead>Enregistré(e) le</TableHead>
               <TableHead className="w-[80px]"></TableHead>
             </TableRow>
           </TableHeader>
@@ -218,6 +222,7 @@ export default function UsersPage() {
                     </Badge>
                   </TableCell>
                   <TableCell>{user.lastLogin}</TableCell>
+                  <TableCell>{user.createdAt}</TableCell>
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>

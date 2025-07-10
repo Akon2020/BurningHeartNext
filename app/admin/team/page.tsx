@@ -1,69 +1,104 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react";
+import api from "@/lib/axios"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
-import { Search, Plus, Edit, Trash } from "lucide-react"
+import { Search, Plus, Edit, Trash, Loader2, } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 // Exemple de données des membres de l'équipe
-const teamMembers = [
-  {
-    id: 1,
-    name: "Père Ciza",
-    role: "Fondateur principal",
-    bio: "Fondateur de la communauté Burning Heart, le Père Ciza a plus de 20 ans d'expérience dans le ministère.",
-    image: "/placeholder.svg?height=300&width=300",
-    order: 1,
-  },
-  {
-    id: 2,
-    name: "Sarah Martin",
-    role: "Directrice de la Louange",
-    bio: "Sarah dirige l'équipe de louange depuis 2018 et est également compositrice de plusieurs chants.",
-    image: "/placeholder.svg?height=300&width=300",
-    order: 2,
-  },
-  {
-    id: 3,
-    name: "Thomas Leclerc",
-    role: "Responsable Jeunesse",
-    bio: "Thomas s'occupe du ministère de la jeunesse et organise des activités pour les 12-25 ans.",
-    image: "/placeholder.svg?height=300&width=300",
-    order: 3,
-  },
-  {
-    id: 4,
-    name: "Marie Dubois",
-    role: "Coordinatrice des Groupes de Maison",
-    bio: "Marie supervise tous les groupes de maison et forme les nouveaux leaders.",
-    image: "/placeholder.svg?height=300&width=300",
-    order: 4,
-  },
-  {
-    id: 5,
-    name: "Jean Moreau",
-    role: "Responsable de l'Accueil",
-    bio: "Jean coordonne l'équipe d'accueil et veille à ce que chaque visiteur se sente bienvenu.",
-    image: "/placeholder.svg?height=300&width=300",
-    order: 5,
-  },
-  {
-    id: 6,
-    name: "Sophie Lambert",
-    role: "Responsable de l'École du Dimanche",
-    bio: "Sophie organise les activités pour les enfants et forme les moniteurs.",
-    image: "/placeholder.svg?height=300&width=300",
-    order: 6,
-  },
-]
+// const teamMembers = [
+//   {
+//     id: 1,
+//     name: "Père Ciza",
+//     role: "Fondateur principal",
+//     bio: "Fondateur de la communauté Burning Heart, le Père Ciza a plus de 20 ans d'expérience dans le ministère.",
+//     image: "/placeholder.svg?height=300&width=300",
+//     order: 1,
+//   },
+//   {
+//     id: 2,
+//     name: "Sarah Martin",
+//     role: "Directrice de la Louange",
+//     bio: "Sarah dirige l'équipe de louange depuis 2018 et est également compositrice de plusieurs chants.",
+//     image: "/placeholder.svg?height=300&width=300",
+//     order: 2,
+//   },
+//   {
+//     id: 3,
+//     name: "Thomas Leclerc",
+//     role: "Responsable Jeunesse",
+//     bio: "Thomas s'occupe du ministère de la jeunesse et organise des activités pour les 12-25 ans.",
+//     image: "/placeholder.svg?height=300&width=300",
+//     order: 3,
+//   },
+//   {
+//     id: 4,
+//     name: "Marie Dubois",
+//     role: "Coordinatrice des Groupes de Maison",
+//     bio: "Marie supervise tous les groupes de maison et forme les nouveaux leaders.",
+//     image: "/placeholder.svg?height=300&width=300",
+//     order: 4,
+//   },
+//   {
+//     id: 5,
+//     name: "Jean Moreau",
+//     role: "Responsable de l'Accueil",
+//     bio: "Jean coordonne l'équipe d'accueil et veille à ce que chaque visiteur se sente bienvenu.",
+//     image: "/placeholder.svg?height=300&width=300",
+//     order: 5,
+//   },
+//   {
+//     id: 6,
+//     name: "Sophie Lambert",
+//     role: "Responsable de l'École du Dimanche",
+//     bio: "Sophie organise les activités pour les enfants et forme les moniteurs.",
+//     image: "/placeholder.svg?height=300&width=300",
+//     order: 6,
+//   },
+// ]
 
 export default function TeamAdminPage() {
   const [searchQuery, setSearchQuery] = useState("")
+  const [teamMembers, setTeamMembers] = useState<any[]>([]);
+  const [nombreUsers, setNombreUsers] = useState<number>(0);
+  const [loading, setLoading] = useState(true);
 
-  // Filtrer les membres de l'équipe en fonction de la recherche
+  const fetchUsers = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get("/api/equipes");
+        const { equipes, total } = response.data;
+        setTeamMembers(
+          equipes.map((u: any) => {
+            const createdAt = new Date(u.createdAt).toLocaleString()
+
+            return {
+              id: u.idEquipe,
+              name: u.nomComplet,
+              role: u.fonction,
+              bio: u.biographie,
+              image: `${process.env.NEXT_PUBLIC_API_URL}/${u.photoProfil}`,
+              order: u.ordre,
+            };
+          })
+        );
+        setNombreUsers(total);
+      } catch (err) {
+        console.error("Erreur lors du chargement des utilisateurs :", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   const filteredMembers = teamMembers
     .filter(
       (member) =>

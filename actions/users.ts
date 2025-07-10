@@ -52,7 +52,7 @@ export const createUser = async (userData: {
 
 export const updateUser = async (id: number, userData: Partial<GetAllUsersResponse>): Promise<GetAllUsersResponse> => {
   try {
-    const res = await api.put<GetAllUsersResponse>(`/api/users/update/${id}`, userData);
+    const res = await api.patch<GetAllUsersResponse>(`/api/users/update/${id}`, userData);
     return res.data;
   } catch (error: any) {
     console.error(`Erreur lors de la mise à jour de l'utilisateur ${id} :`, error);
