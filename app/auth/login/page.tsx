@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { toast } from "@/components/ui/use-toast"
 import { Eye, EyeOff, ArrowLeft } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { login } from "@/actions/auth";
 
 export default function LoginPage() {
   const router = useRouter()
@@ -44,30 +45,38 @@ export default function LoginPage() {
 
     setIsLoading(true)
 
-    try {
+    // try {
       // Simuler une requête API
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      // await new Promise((resolve) => setTimeout(resolve, 1500))
 
       // Pour la démo, on accepte n'importe quel email/mot de passe
       // Dans un environnement de production, vous feriez une vraie vérification
-      document.cookie = "auth=true; path=/; max-age=86400" // Cookie valide 24h
+      // document.cookie = "auth=true; path=/; max-age=86400" // Cookie valide 24h
 
-      toast({
-        title: "Connexion réussie",
-        description: "Vous êtes maintenant connecté.",
-      })
+      try {
+        const response = await login({
+          email: formData.email,
+          password: formData.password,
+        })
+        console.log("Email: ", formData.email)
+        console.log("Password: ", formData.password)
+        toast({
+          title: "Connexion réussie",
+          description: `Vous êtes maintenant connecté en tant que ${response?.userInfo.nomComplet || formData.email}.`,
+        })
 
-      // Rediriger vers la page demandée ou le dashboard
-      router.push(returnUrl)
-    } catch (error) {
-      toast({
-        title: "Erreur de connexion",
-        description: "Identifiants incorrects. Veuillez réessayer.",
-        variant: "destructive",
-      })
-    } finally {
-      setIsLoading(false)
-    }
+        // Rediriger vers la page demandée ou le dashboard
+        router.push(returnUrl)
+      } catch (error) {
+        toast({
+          title: "Erreur de connexion",
+          description: "Identifiants incorrects. Veuillez réessayer.",
+          variant: "destructive",
+        })
+      } finally {
+        setIsLoading(false)
+      }
+    // }
   }
 
   return (

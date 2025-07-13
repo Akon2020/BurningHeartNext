@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
-import { login } from "@/lib/auth"
+// import { login } from "@/lib/auth"
+import { login } from "@/actions/auth"
 
 export async function POST(request: Request) {
   try {
@@ -9,7 +10,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Email et mot de passe requis" }, { status: 400 })
     }
 
-    const user = await login(email, password)
+    const user = await login({email, password})
 
     return NextResponse.json({ user })
   } catch (error) {

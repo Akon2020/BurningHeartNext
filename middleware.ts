@@ -4,8 +4,9 @@ import type { NextRequest } from "next/server"
 // Simule la vérification d'authentification
 // Dans un environnement de production, vous utiliseriez des cookies ou JWT
 const isAuthenticated = (request: NextRequest) => {
-  // Pour la démo, on vérifie simplement si un cookie "auth" existe
-  return request.cookies.has("auth")
+  // Pour la démo, on vérifie simplement si un cookie "token" existe
+  // return request.cookies.has("token")
+  return request.cookies.get("token")
 }
 
 export function middleware(request: NextRequest) {

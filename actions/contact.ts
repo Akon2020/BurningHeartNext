@@ -47,16 +47,6 @@ export const createContact = async (data: CreateContactPayload): Promise<void> =
   }
 };
 
-// export const createContact = async (contactData: Omit<Contact, 'idContact' | 'statut' | 'repondu' | 'createdAt'>): Promise<Contact> => {
-//   try {
-//     const res = await api.post<{ data: Contact }>(`/api/contacts/add`, contactData)
-//     return res.data.data
-//   } catch (error: any) {
-//     console.error('Erreur lors de la création du contact :', error)
-//     throw new Error(error.response?.data?.message || 'Erreur inconnue')
-//   }
-// }
-
 export const replyToContact = async (id: number, payload: { sujetReponse: string; messageReponse: string }): Promise<Contact> => {
   try {
     const res = await api.post<{ data: Contact }>(`/api/contacts/repondre/${id}`, payload)

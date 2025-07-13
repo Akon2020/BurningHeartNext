@@ -47,3 +47,13 @@ export interface GetAllEquipesResponse {
   total: number;
   equipes: Equipe[];
 }
+
+export interface GetAllAuthResponse {
+  message: string;
+  data: Auth[];
+}
+
+export interface Auth {
+  token: string;
+  userInfo: User[];
+}
