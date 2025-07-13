@@ -50,10 +50,10 @@ export interface GetAllEquipesResponse {
 
 export interface GetAllAuthResponse {
   message: string;
-  data: Auth[];
+  data: Auth;
 }
 
 export interface Auth {
   token: string;
-  userInfo: User[];
+  userInfo: User;
 }

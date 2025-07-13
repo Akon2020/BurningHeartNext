@@ -9,11 +9,13 @@ export interface AuthPayload {
 export const login = async (data: AuthPayload): Promise<GetAllAuthResponse> => {
   try {
     const res = await api.post<GetAllAuthResponse>(
-      "/api/auth/login", data,
+      "/api/auth/login",
+      data,
       {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
+        withCredentials: true,
       }
     );
     return res.data;

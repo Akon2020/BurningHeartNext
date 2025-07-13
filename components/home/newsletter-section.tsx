@@ -11,39 +11,14 @@ import { NewsletterModal } from "@/components/modals/newsletter-modal"
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("")
-  // const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleSubscribe = () => {
     setIsModalOpen(true)
   }
 
-  /* const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (!email) {
-      toast({
-        title: "Erreur",
-        description: "Veuillez entrer votre adresse email.",
-        variant: "destructive",
-      })
-      return
-    }
-
-    // setIsLoading(true)
-
-    // Simulate API call
-    setTimeout(() => {
-      toast({
-        title: "Inscription réussie!",
-        description: "Vous êtes maintenant inscrit à notre newsletter.",
-      })
-      setEmail("")
-      // setIsLoading(false)
-    }, 1500)
-  } */
-
   return (
+    <>
     <section className="py-16 bg-primary text-white">
       <div className="container">
         <div className="max-w-3xl mx-auto text-center">
@@ -66,9 +41,6 @@ const NewsletterSection = () => {
             <Button onClick={handleSubscribe} variant="secondary">
               Inscription
             </Button>
-            {/* <Button type="submit" variant="secondary" disabled={isLoading}>
-              {isLoading ? "Inscription..." : "S'inscrire"}
-            </Button> */}
           </div>
 
           <p className="text-sm mt-4 text-white/70">
@@ -77,6 +49,8 @@ const NewsletterSection = () => {
         </div>
       </div>
     </section>
+    <NewsletterModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} initialEmail={email} />
+  </>
   )
 }
 

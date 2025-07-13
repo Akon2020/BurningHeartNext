@@ -63,7 +63,7 @@ export function NewsletterModal({ isOpen, onClose, initialEmail = "" }: Newslett
             </div>
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Inscription Réussie !</h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Merci {formData.name} ! Vous recevrez bientôt nos dernières actualités immobilières.
+              Merci {formData.name} ! Vous recevrez bientôt nos dernières actualités.
             </p>
           </div>
         </DialogContent>
@@ -76,7 +76,7 @@ export function NewsletterModal({ isOpen, onClose, initialEmail = "" }: Newslett
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#EC443B] to-[#FF9900] rounded-full flex items-center justify-center mr-3">
+            <div className="w-10 h-10 bg-gradient-to-br bg-primary rounded-full flex items-center justify-center mr-3">
               <Mail className="h-5 w-5 text-white" />
             </div>
             Abonnez-vous à notre Newsletter
@@ -120,7 +120,7 @@ export function NewsletterModal({ isOpen, onClose, initialEmail = "" }: Newslett
               </Button>
               <Button
                 type="submit"
-                className="flex-1 bg-[#EC443B] hover:bg-[#d63c2e] text-white"
+                className="flex-1 bg-primary hover:bg-[#911a0f] text-white"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Inscription..." : "S'abonner"}
