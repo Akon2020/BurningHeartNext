@@ -31,6 +31,22 @@ export interface GetAllContactsResponse {
   contactsInfo: Contact[];
 }
 
+export type AbonneStatut = "actif" | "inactif" | "desabonne";
+
+export interface Abonne {
+  idAbonne: number;
+  nomComplet: string;
+  email: string;
+  statut: AbonneStatut;
+  dateAbonnement: string;
+  dateDesabonnement: string;
+}
+
+export interface GetAllAbonnesResponse {
+  nombre: number;
+  abonnesInfo: Abonne[];
+}
+
 export interface Equipe {
   idEquipe: number;
   nomComplet: string;

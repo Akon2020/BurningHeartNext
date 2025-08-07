@@ -1,26 +1,40 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
-// Simule la vérification d'authentification
-// Dans un environnement de production, vous utiliseriez des cookies ou JWT
-const isAuthenticated = (request: NextRequest) => {
-  // Pour la démo, on vérifie simplement si un cookie "token" existe
-  // return request.cookies.has("token")
-  return request.cookies.get("token")
-}
-
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   // Protéger les routes admin
   if (request.nextUrl.pathname.startsWith("/admin")) {
-    if (!isAuthenticated(request)) {
-      // Rediriger vers la page de login avec l'URL de retour
-      const loginUrl = new URL("/auth/login", request.url)
-      loginUrl.searchParams.set("returnUrl", request.nextUrl.pathname)
-      return NextResponse.redirect(loginUrl)
+    const token = request.cookies.get("token")?.value;
+
+    if (!token) {
+      const loginUrl = new URL("/auth/login", request.url);
+      loginUrl.searchParams.set("returnUrl", request.nextUrl.pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/status`, {
+        headers: {
+          cookie: `token=${token}`,
+        },
+        credentials: "include",
+      });
+
+      const data = await res.json();
+
+      if (res.status !== 200 || !data.authenticated) {
+        const loginUrl = new URL("/auth/login", request.url);
+        loginUrl.searchParams.set("returnUrl", request.nextUrl.pathname);
+        return NextResponse.redirect(loginUrl);
+      }
+    } catch (error) {
+      const loginUrl = new URL("/auth/login", request.url);
+      loginUrl.searchParams.set("returnUrl", request.nextUrl.pathname);
+      return NextResponse.redirect(loginUrl);
     }
   }
 
-  return NextResponse.next()
+  return NextResponse.next();
 }
 
 export const config = {
