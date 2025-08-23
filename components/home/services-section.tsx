@@ -1,3 +1,5 @@
+"use client"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Package, FileText, Presentation, Users, Megaphone, Feather, Target, Globe, Camera, Wallet, Compass, Handshake, UserCog } from "lucide-react"
 
